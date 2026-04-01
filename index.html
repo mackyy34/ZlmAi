@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZLM-AI</title>
+    <meta name="description"
+        content="Experience the next generation of AI with ZLM-AI. High-end Text-to-Image, Image-to-Video, and Text-to-Video generation tools.">
+
+    <!-- Google Fonts: Inter and Outfit for a premium feel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <link rel="stylesheet" href="2.css">
+
+</head>
+
+<body>
+
+    <div class="glow-sphere glow-sphere-1"></div>
+    <div class="glow-sphere glow-sphere-2"></div>
+
+    <nav id="navbar">
+        <a href="#" class="logo-container" onclick="showSection('home')">
+            <img src="img.jpg" alt="ZLM-AI" class="logo-img">
+            <span class="logo-text">ZLM-AI</span>
+        </a>
+        <div class="nav-links">
+            <a href="javascript:void(0)" class="nav-link active" onclick="showSection('home')">Home</a>
+            <a href="javascript:void(0)" class="nav-link" onclick="showSection('community')">Community</a>
+            <a href="javascript:void(0)" class="nav-link" onclick="showSection('generate')">Generate</a>
+            <a href="javascript:void(0)" class="nav-link" onclick="showSection('tools')">Free AI Tools</a>
+            <a href="javascript:void(0)" class="nav-link" onclick="showSection('prompts')">Prompts</a>
+            <a href="javascript:void(0)" class="nav-link" onclick="showSection('pdf')">PDF</a>
+            <a href="javascript:void(0)" class="nav-link" onclick="openPricing()">Pricing</a>
+        </div>
+
+        <div class="nav-auth" id="navAuth">
+            <a href="/api/auth/login" class="btn-primary" style="padding: 10px 25px; font-size: 14px; animation: none;">
+                Login with Google <i class="ph ph-google-logo"></i>
+            </a>
+        </div>
+    </nav>
+
+    <!-- SECTION: HOME -->
+    <div id="section-home" class="section-view active">
+        <section class="hero">
+            <div class="badge">Next Gen AI Platform</div>
+            <h1>Create Magic with<br>Artificial Intelligence</h1>
+            <p>Create AI-powered content and discover the best free tools to scale your vision.</p>
+            <button class="btn-primary" onclick="showSection('generate')">
+                Start Creating <i class="ph ph-arrow-right"></i>
+            </button>
+        </section>
+
+        <section class="showcase-container">
+            <!-- Row 1: Right Side Image -->
+            <div class="showcase-row">
+                <div class="showcase-content">
+                    <h2 style="font-size: 38px; margin-bottom: 20px;">Next-Gen AI Interface</h2>
+                    <p style="color: var(--text-muted); font-size: 17px;">Experience high-fidelity holographic
+                        dashboards with ultra-clean layouts and cinematic lighting for professional AI workflows.</p>
+                    <div class="prompt-box">
+
+                        "futuristic AI dashboard interface, dark mode, glowing neon accents, holographic UI panels,
+                        ultra clean layout, soft gradients, cinematic lighting, high detail, 4k"
+                    </div>
+                </div>
+                <div class="showcase-image-wrapper">
+                    <img src="asset/1.png" alt="AI Interface" class="showcase-img">
+                </div>
+            </div>
+
+            <!-- Row 2: Left Side Image -->
+            <div class="showcase-row reverse">
+                <div class="showcase-content">
+                    <h2 style="font-size: 38px; margin-bottom: 20px;">Minimal Workspace Design</h2>
+                    <p style="color: var(--text-muted); font-size: 17px;">Synthesize modern workspace aesthetics
+                        featuring sleek desk setups and soft natural light for a premium creative environment.</p>
+                    <div class="prompt-box">
+
+                        "minimal modern workspace, sleek desk setup, soft natural light, neutral tones, glass and metal
+                        textures, premium aesthetic, shallow depth of field, 4k"
+                    </div>
+                </div>
+                <div class="showcase-image-wrapper">
+                    <img src="asset/2.png" alt="Minimal Workspace" class="showcase-img">
+                </div>
+            </div>
+
+            <!-- Row 3: Right Side Image -->
+            <div class="showcase-row">
+                <div class="showcase-content">
+                    <h2 style="font-size: 38px; margin-bottom: 20px;">Cyberpunk Nightscape</h2>
+                    <p style="color: var(--text-muted); font-size: 17px;">Generate vibrant cyberpunk cityscapes with
+                        intricate rain reflections and deep cinematic contrast in stunning 4K detail.</p>
+                    <div class="prompt-box">
+
+                        "cyberpunk city at night, neon lights, rain reflections, deep contrast, cinematic atmosphere,
+                        ultra detailed, vibrant glow, 4k"
+                    </div>
+                </div>
+                <div class="showcase-image-wrapper">
+                    <img src="asset/3.png" alt="Cyberpunk City" class="showcase-img">
+                </div>
+            </div>
+
+            <!-- Row 4: Left Side Image -->
+            <div class="showcase-row reverse">
+                <div class="showcase-content">
+                    <h2 style="font-size: 38px; margin-bottom: 20px;">Energy Flow Visualization</h2>
+                    <p style="color: var(--text-muted); font-size: 17px;">Visualize abstract artificial intelligence
+                        concepts with flowing energy waves and glowing particles in a futuristic space.</p>
+                    <div class="prompt-box">
+
+                        "abstract artificial intelligence concept, flowing energy waves, glowing particles, smooth
+                        gradients, dark background, futuristic, ultra sharp, 4k"
+                    </div>
+                </div>
+                <div class="showcase-image-wrapper">
+                    <img src="asset/4.png" alt="AI Concept" class="showcase-img">
+                </div>
+            </div>
+
+            <!-- Row 5: Right Side Image -->
+            <div class="showcase-row">
+                <div class="showcase-content">
+                    <h2 style="font-size: 38px; margin-bottom: 20px;">Digital Human Synergy</h2>
+                    <p style="color: var(--text-muted); font-size: 17px;">Explore the fusion of humanity and digital
+                        interfaces through detailed holographic overlays and atmospheric neon lighting.</p>
+                    <div class="prompt-box">
+
+                        "human face merging with digital interface, holographic overlays, blue neon glow, high detail,
+                        futuristic concept, cinematic lighting, 4k"
+                    </div>
+                </div>
+                <div class="showcase-image-wrapper">
+                    <img src="asset/5.png" alt="Digital Fusion" class="showcase-img">
+                </div>
+            </div>
+        </section>
+
+        <section class="reviews">
+            <h2>Trusted by Visionaries</h2>
+            <div class="review-grid">
+                <div class="review-card">
+                    <p class="review-text">"ZLM-AI has completely revolutionized our design workflow. The image quality
+                        is leagues ahead of anything else available today."</p>
+                    <div class="reviewer">
+                        <div class="reviewer-img"></div>
+                        <div class="reviewer-info">
+                            <h4>Alex Rivers</h4>
+                            <p>Art Director @ PixelFlow</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <p class="review-text">"The video generation is mind-blowing. Seeing my static concepts come to life
+                        in seconds is a game-changer for my studio."</p>
+                    <div class="reviewer">
+                        <div class="reviewer-img"></div>
+                        <div class="reviewer-info">
+                            <h4>Sarah Jenkins</h4>
+                            <p>Independent Filmmaker</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <p class="review-text">"The cleanest UI I've ever used in an AI tool. It feels premium, fast, and
+                        remarkably intuitive. 10/10 recommendation."</p>
+                    <div class="reviewer">
+                        <div class="reviewer-img"></div>
+                        <div class="reviewer-info">
+                            <h4>David Chen</h4>
+                            <p>Product Designer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- SECTION: GENERATE -->
+    <div id="toast-container"></div>
+    <div id="section-generate" class="section-view">
+        <div style="text-align: center; margin-bottom: 60px;">
+            <h1 style="font-size: 60px;">AI Creation Studio</h1>
+            <p style="color: var(--text-muted);">Make ai genrated content</p>
+        </div>
+
+        <div class="generate-tabs">
+            <button class="tab-btn active" onclick="switchGenMode('t2i')"><i class="ph ph-image"></i> Text to
+                Image</button>
+            <button class="tab-btn" onclick="switchGenMode('i2v')"><i class="ph ph-video-camera"></i> Image to
+                Video</button>
+            <button class="tab-btn" onclick="switchGenMode('t2v')"><i class="ph ph-film-strip"></i> Text to
+                Video</button>
+        </div>
+
+        <div class="coming-soon-container" id="coming-soon">
+            <h2 class="coming-soon-text">COMMING SOON....</h2>
+        </div>
+
+        <div class="generate-container">
+            <div class="generator-box">
+                <div class="input-group">
+                    <label>Selected Model</label>
+                    <select class="model-selector">
+                        <option value="zlm-ai">zlm.ai</option>
+                    </select>
+                </div>
+
+                <div id="t2i-inputs" class="gen-mode-inputs">
+                    <div class="input-group">
+                        <label>Describe your vision</label>
+                        <textarea id="image-prompt"
+                            placeholder="e.g. A futuristic landscape with flying cars and neon lights..."></textarea>
+                    </div>
+                </div>
+
+                <div id="i2v-inputs" class="gen-mode-inputs" style="display: none;">
+                    <div class="input-group">
+                        <label>Source Image URL (Reference for Motion)</label>
+                        <input type="text" id="i2v-image-url" placeholder="Paste your image URL here (e.g. https://...)"
+                            style="width: 100%; border-radius: 10px; padding: 12px; background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); color: #fff;">
+                    </div>
+                    <div class="input-group" style="margin-top: 15px;">
+                        <label>Describe the desired motion</label>
+                        <textarea id="i2v-prompt"
+                            placeholder="e.g. The character slowly blinks and smiles at the camera..."></textarea>
+                    </div>
+                </div>
+
+                <div id="t2v-inputs" class="gen-mode-inputs" style="display: none;">
+                    <div class="input-group">
+                        <label>Video Scenario Prompt</label>
+                        <textarea id="video-prompt"
+                            placeholder="e.g. A cinematic drone shot of a volcanic eruption on an ice planet..."></textarea>
+                    </div>
+                </div>
+
+                <!-- NEW: ASPECT RATIO SECTION -->
+                <div class="input-group" style="margin-top: 20px;">
+                    <label>Aspect Ratio</label>
+                    <div class="ratio-selector" id="ratio-selector">
+                        <!-- Square only for images -->
+                        <button class="ratio-btn active" id="ratio-square" onclick="setRatio('1:1')">
+                            <i class="ph ph-rectangle"></i>
+                            <span>SQUARE (1:1)</span>
+                        </button>
+                        <button class="ratio-btn" id="ratio-landscape" onclick="setRatio('16:9')">
+                            <i class="ph ph-monitor"></i>
+                            <span>LANDSCAPE (16:9)</span>
+                        </button>
+                        <button class="ratio-btn" id="ratio-portrait" onclick="setRatio('9:16')">
+                            <i class="ph ph-device-mobile"></i>
+                            <span>PORTRAIT (9:16)</span>
+                        </button>
+                    </div>
+                </div>
+
+                <button id="gen-btn" class="btn-primary" onclick="generateNow()"
+                    style="width: 100%; justify-content: center; margin-top: 20px;">
+                    Generate Now <i class="ph ph-sparkle"></i>
+                </button>
+
+                <div id="preview-area" class="preview-area">
+                    <div id="status-display">
+                        <i class="ph ph-monitor-play"
+                            style="font-size: 50px; opacity: 0.3; margin-bottom: 15px; display: block; margin-left: auto; margin-right: auto;"></i>
+                        <p style="color: var(--text-muted);">Click "Generate Now" to start.</p>
+                    </div>
+                    <div id="preview-display-box" style="display: none;">
+                        <!-- Preview content injected here -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="history-box">
+                <h3>Your Generations:</h3>
+
+                <div class="history-list">
+                    <!-- History items will appear here -->
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION: FREE AI TOOLS -->
+    <div id="section-tools" class="section-view">
+        <div style="text-align: center; margin-bottom: 60px; padding: 0 6%;">
+            <h1 style="font-size: clamp(40px, 8vw, 70px); line-height: 1;">Free AI Tools</h1>
+            <p
+                style="color: var(--text-muted); margin-top: 20px; font-size: 18px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                Discover all Free & Fremium AI tools to use .</p>
+        </div>
+
+        <div class="filter-container">
+            <button class="filter-btn active" onclick="filterTools('all', this)">ALL</button>
+            <button class="filter-btn" onclick="filterTools('image', this)">IMAGE</button>
+            <button class="filter-btn" onclick="filterTools('video', this)">VIDEO</button>
+            <button class="filter-btn" onclick="filterTools('audio', this)">AUDIO</button>
+            <button class="filter-btn" onclick="filterTools('text', this)">TEXT</button>
+        </div>
+
+        <div class="tools-grid">
+            <!-- ChatGPT -->
+            <div class="tool-card" data-category="text">
+                <div class="tool-info">
+                    <a href="https://chat.openai.com/" target="_blank" class="tool-title">ChatGPT</a>
+                    <div class="tool-tags">
+                        <span class="tag tag-txt2txt">TXT 2 TXT</span>
+                    </div>
+                </div>
+                <img src="https://www.google.com/s2/favicons?sz=64&domain=openai.com" class="tool-logo">
+            </div>
+
+            <!-- Claude -->
+            <div class="tool-card" data-category="text">
+                <div class="tool-info">
+                    <a href="https://claude.ai/" target="_blank" class="tool-title">Claude AI</a>
+                    <div class="tool-tags">
+                        <span class="tag tag-txt2txt">TXT 2 TXT</span>
+                    </div>
+                </div>
+                <img src="https://www.google.com/s2/favicons?sz=64&domain=claude.ai" class="tool-logo">
+            </div>
+
+            <!-- Gemini -->
+            <div class="tool-card" data-category="text">
+                <div class="tool-info">
+                    <a href="https://gemini.google.com/" target="_blank" class="tool-title">Google Gemini</a>
+                    <div class="tool-tags">
+                        <span class="tag tag-txt2txt">TXT 2 TXT</span>
+                    </div>
+                </div>
+                <img src="https://www.google.com/s2/favicons?sz=64&domain=gemini.google.com" class="tool-logo">
+            </div>
+
+            <!-- Z.ai -->
+            <div class="tool-card" data-category="text image audio">
+                <div class="tool-info">
+                    <a href="https://chat.z.ai/" target="_blank" class="tool-title">Z.ai</a>
+                    <div class="tool-tags">
+                        <span class="tag tag-unlimited">UNLIMITED</span>
+                        <span class="tag tag-txt2txt">TXT 2 TXT</span>
+                        <span class="tag tag-txt2img">TXT 2 IMG</span>
+                        <span class="tag tag-txt2audio">TXT 2 AUDIO</span>
+                    </div>
+                </div>
+                <img src="https://www.google.com/s2/favicons?sz=64&domain=z.ai" class="tool-logo">
+            </div>
+
+            <!-- Kimi -->
+            <div class="tool-card" data-category="text">
+                <div class="tool-info">
+                    <a href="https://kimi.moonshot.cn/" target="_blank" class="tool-title">Kimi AI</a>
+                    <div class="tool-tags">
+                        <span class="tag tag-unlimited">UNLIMITED</span>
+                        <span class="tag tag-txt2txt">TXT 2 TXT</span>
+                    </div>
+                </div>
+                <img src="https://www.google.com/s2/favicons?sz=64&domain=kimi.moonshot.cn" class="tool-logo">
+            </div>
+
+            <!-- Deepseek -->
+            <div class="tool-card" data-category="text">
+                <div class="tool-info">
+                    <a href="https://chat.deepseek.com/" target="_blank" class="tool-title">Deepseek</a>
+                    <div class="tool-tags">
+                        <span class="tag tag-txt2txt">TXT 2 TXT</span>
+                    </div>
+                </div>
+                <img src="https://www.google.com/s2/favicons?sz=64&domain=deepseek.com" class="tool-logo">
+            </div>
+
+            <!-- Grok -->
+            <div class="tool-card" data-category="text image video">
+                <div class="tool-info">
+                    <a href="https://grok.com/" target="_blank" class="tool-title">Grok AI</a>
+                    <div class="tool-tags">
+                        <span class="tag tag-txt2txt">TXT 2 TXT</span>
+                        <span class="tag tag-txt2img">TXT 2 IMG</span>
+                        <span class="tag tag-txt2video">TXT 2 VIDEO</span>
+                    </div>
+                </div>
+                <img src="https://www.google.com/s2/favicons?sz=64&domain=grok.com" class="tool-logo">
+            </div>
+
+            <!-- Qwen AI -->
+            <div class="tool-card" data-category="text image video">
+                <div class="tool-info">
+                    <a href="https://chat.qwen.ai/" target="_blank" class="tool-title">Qwen AI</a>
+                    <div class="tool-tags">
+                        <span class="tag tag-unlimited">UNLIMITED</span>
+                        <span class="tag tag-txt2txt">TXT 2 TXT</span>
+                        <span class="tag tag-txt2img">TXT 2 IMG</span>
+                        <span class="tag tag-txt2video">TXT 2 VIDEO</span>
+                    </div>
+                </div>
+                <img src="https://www.google.com/s2/favicons?sz=64&domain=qwen.ai" class="tool-logo">
+            </div>
+
+            <!-- Meta AI -->
+            <div class="tool-card" data-category="text image video">
+                <div class="tool-info">
+                    <a href="https://www.meta.ai/" target="_blank" class="tool-title">Meta AI</a>
+                    <div class="tool-tags">
+                        <span class="tag tag-unlimited">UNLIMITED</span>
+                        <span class="tag tag-txt2txt">TXT 2 TXT</span>
+                        <span class="tag tag-txt2img">TXT 2 IMG</span>
+                        <span class="tag tag-txt2video">TXT 2 VIDEO</span>
+                    </div>
+                </div>
+                <img src="https://www.google.com/s2/favicons?sz=64&domain=meta.ai" class="tool-logo">
+            </div>
+
+            <!-- Copilot -->
+            <div class="tool-card" data-category="text audio">
+                <div class="tool-info">
+                    <a href="https://copilot.microsoft.com/" target="_blank" class="tool-title">Copilot</a>
+                    <div class="tool-tags">
+                        <span class="tag tag-unlimited">UNLIMITED</span>
+                        <span class="tag tag-txt2txt">TXT 2 TXT</span>
+                        <span class="tag tag-txt2audio">TXT 2 AUDIO</span>
+                    </div>
+                </div>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShrLpEY4Oz4-7gvNgKH2ej68nkHaFsxgSYvA&s"
+                    class="tool-logo">
+            </div>
+
+            <!-- ImageFX -->
+            <div class="tool-card" data-category="image">
+                <div class="tool-info">
+                    <a href="https://labs.google/imagefx/" target="_blank" class="tool-title">ImageFX</a>
+                    <div class="tool-tags">
+                        <span class="tag tag-txt2img">TXT 2 IMG</span>
+                    </div>
+                </div>
+                <img src="https://www.google.com/s2/favicons?sz=64&domain=labs.google" class="tool-logo">
+            </div>
+
+            <!-- Google Flow -->
+            <div class="tool-card" data-category="image video">
+                <div class="tool-info">
+                    <a href="https://labs.google/flow/" target="_blank" class="tool-title">Google Flow</a>
+                    <div class="tool-tags">
+                        <span class="tag tag-txt2img">TXT 2 IMG</span>
+                        <span class="tag tag-txt2video">TXT 2 VIDEO</span>
+                    </div>
+                </div>
+                <img src="https://www.google.com/s2/favicons?sz=64&domain=labs.google" class="tool-logo">
+            </div>
+
+            <!-- Whisk -->
+            <div class="tool-card" data-category="image">
+                <div class="tool-info">
+                    <a href="https://labs.google/whisk/" target="_blank" class="tool-title">Whisk</a>
+                    <div class="tool-tags">
+                        <span class="tag tag-txt2img">TXT 2 IMG</span>
+                    </div>
+                </div>
+                <img src="https://www.google.com/s2/favicons?sz=64&domain=labs.google" class="tool-logo">
+            </div>
+
+            <!-- Wan Video -->
+            <div class="tool-card" data-category="image video">
+                <div class="tool-info">
+                    <a href="https://wan.video/" target="_blank" class="tool-title">Wan Video</a>
+                    <div class="tool-tags">
+                        <span class="tag tag-unlimited">UNLIMITED</span>
+                        <span class="tag tag-txt2img">TXT 2 IMG</span>
+                        <span class="tag tag-txt2video">TXT 2 VIDEO</span>
+                        <span class="tag tag-motion">MOTION CONTROL</span>
+                    </div>
+                </div>
+                <img src="https://www.google.com/s2/favicons?sz=64&domain=wan.video" class="tool-logo">
+            </div>
+
+            <!-- Kling AI -->
+            <div class="tool-card" data-category="video">
+                <div class="tool-info">
+                    <a href="https://klingai.com/" target="_blank" class="tool-title">Kling AI</a>
+                    <div class="tool-tags">
+                        <span class="tag tag-txt2video">TXT 2 VIDEO</span>
+                        <span class="tag tag-motion">MOTION CONTROL</span>
+                    </div>
+                </div>
+                <img src="https://www.google.com/s2/favicons?sz=64&domain=klingai.com" class="tool-logo">
+            </div>
+
+            <!-- ElevenLabs -->
+            <div class="tool-card" data-category="audio">
+                <div class="tool-info">
+                    <a href="https://elevenlabs.io/" target="_blank" class="tool-title">ElevenLabs</a>
+                    <div class="tool-tags">
+                        <span class="tag tag-txt2audio">TXT 2 AUDIO</span>
+                    </div>
+                </div>
+                <img src="https://www.google.com/s2/favicons?sz=64&domain=elevenlabs.io" class="tool-logo">
+            </div>
+
+            <!-- Tencent Hunyuan -->
+            <div class="tool-card" data-category="image video">
+                <div class="tool-info">
+                    <a href="https://hunyuan.tencent.com/" target="_blank" class="tool-title">Tencent Hunyuan</a>
+                    <div class="tool-tags">
+                        <span class="tag tag-unlimited">UNLIMITED</span>
+                        <span class="tag tag-txt2img">TXT 2 IMG</span>
+                        <span class="tag tag-txt2video">TXT 2 VIDEO</span>
+                    </div>
+                </div>
+                <img src="https://www.google.com/s2/favicons?sz=64&domain=hunyuan.tencent.com" class="tool-logo">
+            </div>
+
+            <!-- Suno AI -->
+            <div class="tool-card" data-category="audio">
+                <div class="tool-info">
+                    <a href="https://suno.ai/" target="_blank" class="tool-title">Suno AI</a>
+                    <div class="tool-tags">
+                        <span class="tag tag-txt2audio">TXT 2 AUDIO</span>
+                    </div>
+                </div>
+                <img src="https://www.google.com/s2/favicons?sz=64&domain=suno.ai" class="tool-logo">
+            </div>
+
+            <!-- Perchance AI -->
+            <div class="tool-card" data-category="image">
+                <div class="tool-info">
+                    <a href="https://perchance.org/ai-text-to-image-generator" target="_blank"
+                        class="tool-title">Perchance AI</a>
+                    <div class="tool-tags">
+                        <span class="tag tag-txt2img">TXT 2 IMG</span>
+                    </div>
+                </div>
+                <img src="https://www.google.com/s2/favicons?sz=64&domain=perchance.org" class="tool-logo">
+            </div>
+
+            <!-- Udio AI -->
+            <div class="tool-card" data-category="audio">
+                <div class="tool-info">
+                    <a href="https://udio.com/" target="_blank" class="tool-title">Udio AI</a>
+                    <div class="tool-tags">
+                        <span class="tag tag-txt2audio">TXT 2 AUDIO</span>
+                    </div>
+                </div>
+                <img src="https://www.google.com/s2/favicons?sz=64&domain=udio.com" class="tool-logo">
+            </div>
+
+            <!-- Digen AI -->
+            <div class="tool-card" data-category="image video">
+                <div class="tool-info">
+                    <a href="https://digen.ai/" target="_blank" class="tool-title">Digen AI</a>
+                    <div class="tool-tags">
+                        <span class="tag tag-txt2img">TXT 2 IMG</span>
+                        <span class="tag tag-txt2video">TXT 2 VIDEO</span>
+                    </div>
+                </div>
+                <img src="https://www.google.com/s2/favicons?sz=64&domain=digen.ai" class="tool-logo">
+            </div>
+
+            <!-- PicLumen -->
+            <div class="tool-card" data-category="image">
+                <div class="tool-info">
+                    <a href="https://piclumen.com/" target="_blank" class="tool-title">PicLumen</a>
+                    <div class="tool-tags">
+                        <span class="tag tag-txt2img">TXT 2 IMG</span>
+                    </div>
+                </div>
+                <img src="https://www.google.com/s2/favicons?sz=64&domain=piclumen.com" class="tool-logo">
+            </div>
+
+            <!-- Dreamina -->
+            <div class="tool-card" data-category="image video">
+                <div class="tool-info">
+                    <a href="https://dreamina.capcut.com/" target="_blank" class="tool-title">Dreamina</a>
+                    <div class="tool-tags">
+                        <span class="tag tag-txt2img">TXT 2 IMG</span>
+                        <span class="tag tag-txt2video">TXT 2 VIDEO</span>
+                    </div>
+                </div>
+                <img src="https://www.google.com/s2/favicons?sz=64&domain=dreamina.capcut.com" class="tool-logo">
+            </div>
+
+            <!-- RunwayML -->
+            <div class="tool-card" data-category="video">
+                <div class="tool-info">
+                    <a href="https://runwayml.com/" target="_blank" class="tool-title">RunwayML</a>
+                    <div class="tool-tags">
+                        <span class="tag tag-txt2video">TXT 2 VIDEO</span>
+                    </div>
+                </div>
+                <img src="https://www.google.com/s2/favicons?sz=64&domain=runwayml.com" class="tool-logo">
+            </div>
+
+            <!-- Pixverse -->
+            <div class="tool-card" data-category="video">
+                <div class="tool-info">
+                    <a href="https://pixverse.ai/" target="_blank" class="tool-title">Pixverse AI</a>
+                    <div class="tool-tags">
+                        <span class="tag tag-txt2video">TXT 2 VIDEO</span>
+                    </div>
+                </div>
+                <img src="https://www.google.com/s2/favicons?sz=64&domain=pixverse.ai" class="tool-logo">
+            </div>
+
+            <!-- Vheer -->
+            <div class="tool-card" data-category="image video">
+                <div class="tool-info">
+                    <a href="https://vheer.com/" target="_blank" class="tool-title">Vheer</a>
+                    <div class="tool-tags">
+                        <span class="tag tag-txt2img">TXT 2 IMG</span>
+                        <span class="tag tag-txt2video">TXT 2 VIDEO</span>
+                    </div>
+                </div>
+                <img src="https://www.google.com/s2/favicons?sz=64&domain=vheer.com" class="tool-logo">
+            </div>
+
+
+
+            <!-- Mureka -->
+            <div class="tool-card" data-category="audio">
+                <div class="tool-info">
+                    <a href="https://mureka.ai/" target="_blank" class="tool-title">Mureka AI</a>
+                    <div class="tool-tags">
+                        <span class="tag tag-txt2audio">TXT 2 AUDIO</span>
+                    </div>
+                </div>
+                <img src="https://www.google.com/s2/favicons?sz=64&domain=mureka.ai" class="tool-logo">
+            </div>
+
+            <!-- Sonauto -->
+            <div class="tool-card" data-category="audio">
+                <div class="tool-info">
+                    <a href="https://sonauto.ai/" target="_blank" class="tool-title">Sonauto</a>
+                    <div class="tool-tags">
+                        <span class="tag tag-txt2audio">TXT 2 AUDIO</span>
+                    </div>
+                </div>
+                <img src="https://www.google.com/s2/favicons?sz=64&domain=sonauto.ai" class="tool-logo">
+            </div>
+        </div>
+        <p
+            style="text-align: center; color: rgba(255, 255, 255, 0.4); text-transform: lowercase; font-size: 14px; margin-top: 50px; font-family: 'Outfit'; letter-spacing: 1px;">
+            more tools coming soon...</p>
+    </div>
+    </div>
+
+    <!-- SECTION: PROMPTS -->
+    <div id="section-prompts" class="section-view">
+        <div style="text-align: center; margin-bottom: 80px; padding: 0 6%;">
+            <h1 style="font-size: clamp(40px, 8vw, 70px); line-height: 1;">AI Masterclass Prompts</h1>
+            <p
+                style="color: var(--text-muted); margin-top: 20px; font-size: 18px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                Copy and paste these Expert Agent structures into your AI assistant (ChatGPT, Claude, Gemini etc...).
+            </p>
+        </div>
+
+        <div style="max-width: 1000px; margin: 0 auto; padding: 0 6%;">
+
+            <!-- Prompt 1 -->
+            <div class="prompt-agent-card">
+                <h3 style="color: #fff; font-size: 24px;">01. Cinematic Video Prompt Agent</h3>
+                <div class="prompt-json-block">
+                    <button class="copy-btn" onclick="copyPrompt(this)"><i class="ph ph-copy"></i> Copy JSON</button>
+                    {
+                    "role": "Expert AI cinematic prompt engineer",
+                    "goal": "Turn a simple idea into a highly detailed cinematic AI video generation prompt.",
+                    "instructions": [
+                    "Expand the user's idea into a vivid cinematic scene.",
+                    "Describe the subject with physical appearance, clothing, and expression.",
+                    "Describe the environment with weather, time of day, and atmosphere.",
+                    "Specify camera movement: dolly, pan, tracking shot, crane, or steadicam.",
+                    "Add dramatic lighting: golden hour, neon glow, volumetric fog, or rim lighting.",
+                    "Include motion details: wind, particles, slow motion, or speed ramping.",
+                    "Define mood and color grading: warm tones, cold blue, desaturated, or high contrast.",
+                    "Specify aspect ratio and frame composition.",
+                    "Return only one final polished cinematic video prompt."
+                    ],
+                    "user_input": "[YOUR IDEA HERE]"
+                    }
+                </div>
+            </div>
+
+            <!-- Prompt 2 -->
+            <div class="prompt-agent-card">
+                <h3 style="color: #fff; font-size: 24px;">02. Realistic Image Prompt Agent</h3>
+                <div class="prompt-json-block">
+                    <button class="copy-btn" onclick="copyPrompt(this)"><i class="ph ph-copy"></i> Copy JSON</button>
+                    {
+                    "role": "Expert AI photorealistic prompt engineer",
+                    "goal": "Turn a simple idea into a highly detailed photorealistic AI image generation prompt.",
+                    "instructions": [
+                    "Expand the user's idea with ultra-realistic visual detail.",
+                    "Describe the subject with precise physical features and materials.",
+                    "Describe the environment with natural or urban elements.",
+                    "Add professional photography lighting: softbox, natural window light, backlit, or studio.",
+                    "Specify camera settings: lens type (85mm, 35mm wide), depth of field, aperture.",
+                    "Add texture details: skin pores, fabric weave, metal reflections, water droplets.",
+                    "Define color palette and overall mood.",
+                    "Include post-processing style: RAW, film grain, VSCO, or editorial.",
+                    "Return only one final polished photorealistic image prompt.",
+                    "Do not add any additional text."
+                    ],
+                    "user_input": "[YOUR IDEA HERE]"
+                    }
+                </div>
+            </div>
+
+            <!-- Prompt 3 -->
+            <div class="prompt-agent-card">
+                <h3 style="color: #fff; font-size: 24px;">03. Product Ad Prompt Agent</h3>
+                <div class="prompt-json-block">
+                    <button class="copy-btn" onclick="copyPrompt(this)"><i class="ph ph-copy"></i> Copy JSON</button>
+                    {
+                    "role": "Expert AI product photography prompt engineer",
+                    "goal": "Turn a product idea into a premium commercial advertisement image prompt.",
+                    "instructions": [
+                    "Place the product as the hero element with perfect composition.",
+                    "Describe the product surface, material, and finish in detail.",
+                    "Create a complementary background: gradient, lifestyle scene, or minimalist studio.",
+                    "Add professional product lighting: key light, fill light, rim light, and reflections.",
+                    "Include brand-style elements: clean typography space, premium feel.",
+                    "Add subtle environmental props that enhance the product story.",
+                    "Specify color harmony that makes the product pop.",
+                    "Define the overall commercial style: luxury, tech, organic, or editorial.",
+                    "Return only one final polished product advertisement prompt."
+                    ],
+                    "user_input": "[YOUR PRODUCT HERE]"
+                    }
+                </div>
+            </div>
+
+            <!-- Prompt 4 -->
+            <div class="prompt-agent-card">
+                <h3 style="color: #fff; font-size: 24px;">04. Anime Art Prompt Agent</h3>
+                <div class="prompt-json-block">
+                    <button class="copy-btn" onclick="copyPrompt(this)"><i class="ph ph-copy"></i> Copy JSON</button>
+                    {
+                    "role": "Expert AI anime art prompt engineer",
+                    "goal": "Turn a simple idea into a highly detailed anime-style AI generation prompt.",
+                    "instructions": [
+                    "Describe the character with anime-specific features: hair style, eye color, expression.",
+                    "Add detailed clothing and accessories in anime style.",
+                    "Describe the body language and pose.",
+                    "Create an environment matching anime aesthetics: cherry blossoms, cityscape, fantasy world.",
+                    "Specify the anime art sub-style: Studio Ghibli, shonen, seinen, or cyberpunk anime.",
+                    "Add atmospheric effects: sparkles, energy auras, wind effects, or sakura petals.",
+                    "Define lighting in anime style: dramatic backlighting, soft glow, or neon.",
+                    "Include line quality and color style: cel-shaded, watercolor, or digital painting.",
+                    "Return only one final polished anime image prompt."
+                    ],
+                    "user_input": "[YOUR CHARACTER OR SCENE IDEA HERE]"
+                    }
+                </div>
+            </div>
+
+            <!-- Prompt 5 -->
+            <div class="prompt-agent-card">
+                <h3 style="color: #fff; font-size: 24px;">05. Character Design Prompt Agent</h3>
+                <div class="prompt-json-block">
+                    <button class="copy-btn" onclick="copyPrompt(this)"><i class="ph ph-copy"></i> Copy JSON</button>
+                    {
+                    "role": "Expert AI character design prompt engineer",
+                    "goal": "Turn a character concept into a detailed character design sheet prompt.",
+                    "instructions": [
+                    "Describe the character's face, body type, and distinguishing features.",
+                    "Design a complete outfit with materials, colors, and accessories.",
+                    "Add personality-reflecting visual elements: scars, tattoos, jewelry, or weapons.",
+                    "Specify the art style: fantasy RPG, sci-fi, modern, historical, or stylized.",
+                    "Include a signature color palette for the character.",
+                    "Describe the character's pose showing attitude and personality.",
+                    "Add background elements that hint at the character's story or world.",
+                    "Specify rendering style: concept art, digital painting, or 3D render look.",
+                    "Return only one final polished character design prompt."
+                    ],
+                    "user_input": "[YOUR CHARACTER CONCEPT HERE]"
+                    }
+                </div>
+            </div>
+
+            <!-- Prompt 6 -->
+            <div class="prompt-agent-card">
+                <h3 style="color: #fff; font-size: 24px;">06. Viral Short Video Prompt Agent</h3>
+                <div class="prompt-json-block">
+                    <button class="copy-btn" onclick="copyPrompt(this)"><i class="ph ph-copy"></i> Copy JSON</button>
+                    {
+                    "role": "Expert AI viral video prompt engineer",
+                    "goal": "Turn a simple idea into a visually stunning short-form video generation prompt.",
+                    "instructions": [
+                    "Create an immediately attention-grabbing opening frame.",
+                    "Describe fast-paced visual action that holds viewer attention.",
+                    "Use trending visual styles: hyperlapse, smooth zoom, glitch transitions.",
+                    "Add dynamic camera movement: orbital, whip pan, or POV shot.",
+                    "Include bold colors and high contrast for small-screen impact.",
+                    "Specify vertical 9:16 aspect ratio framing for mobile.",
+                    "Add text-friendly composition with clear focal areas.",
+                    "Define energy level: high intensity, satisfying, or mesmerizing loop.",
+                    "Return only one final polished short video prompt."
+                    ],
+                    "user_input": "[YOUR IDEA HERE]"
+                    }
+                </div>
+            </div>
+
+            <!-- Prompt 7 -->
+            <div class="prompt-agent-card">
+                <h3 style="color: #fff; font-size: 24px;">07. Environment Scene Prompt Agent</h3>
+                <div class="prompt-json-block">
+                    <button class="copy-btn" onclick="copyPrompt(this)"><i class="ph ph-copy"></i> Copy JSON</button>
+                    {
+                    "role": "Expert AI environment art prompt engineer",
+                    "goal": "Turn a location idea into a richly detailed environment scene prompt.",
+                    "instructions": [
+                    "Expand the location into a fully realized environment.",
+                    "Describe the terrain, architecture, or natural formations in detail.",
+                    "Add atmospheric elements: fog, rain, dust, snow, or heat haze.",
+                    "Specify time of day and sky conditions: sunrise, overcast, starry night, aurora.",
+                    "Include vegetation, water features, or urban elements that bring life to the scene.",
+                    "Add scale reference: tiny figures, vehicles, or animals for grandeur.",
+                    "Define the overall art direction: photorealistic, painterly, or concept art.",
+                    "Specify depth layers: foreground interest, mid-ground subject, background atmosphere.",
+                    "Return only one final polished environment scene prompt."
+                    ],
+                    "user_input": "[YOUR LOCATION OR WORLD IDEA HERE]"
+                    }
+                </div>
+            </div>
+
+            <!-- Prompt 8 -->
+            <div class="prompt-agent-card">
+                <h3 style="color: #fff; font-size: 24px;">08. Motion Design Prompt Agent</h3>
+                <div class="prompt-json-block">
+                    <button class="copy-btn" onclick="copyPrompt(this)"><i class="ph ph-copy"></i> Copy JSON</button>
+                    {
+                    "role": "Expert AI motion design prompt engineer",
+                    "goal": "Turn an action idea into a dynamic motion-focused AI generation prompt.",
+                    "instructions": [
+                    "Describe the primary motion or action with precise choreography.",
+                    "Add physics-based details: gravity, momentum, fluid dynamics, or particle effects.",
+                    "Specify speed and timing: slow motion, real-time, or time-lapse.",
+                    "Include secondary motion: hair flowing, clothes rippling, debris scattering.",
+                    "Describe motion blur, trails, or afterimage effects where appropriate.",
+                    "Add impact moments: explosions, splashes, collisions, or transformations.",
+                    "Define camera behavior relative to the motion: tracking, static, or handheld shake.",
+                    "Specify the overall energy: graceful, explosive, smooth, or chaotic.",
+                    "Return only one final polished motion-focused prompt."
+                    ],
+                    "user_input": "[YOUR ACTION OR MOTION IDEA HERE]"
+                    }
+                </div>
+            </div>
+        </div>
+        <p style="text-align: center; color: #00d4ff; font-size: 13px; margin-top: 30px; letter-spacing: 1px;">more
+            prompts coming soon ...</p>
+        <!-- SECTION: PRO TIPS -->
+        <div class="tips-section">
+            <div style="text-align: center; margin-bottom: 50px;">
+                <h2 style="font-size: 45px; font-family: 'Outfit';">Pro Tips </h2>
+                <p style="color: var(--text-muted); font-size: 16px;">Master the art of AI generation with these expert
+                    strategies.</p>
+            </div>
+
+            <div class="tips-grid">
+                <!-- Tip 1 -->
+                <div class="tip-card">
+                    <h4>01. Be Specific</h4>
+                    <p>Replace generic words with precise descriptions. Instead of "a car", say "a matte black Porsche
+                        911 GT3 RS".</p>
+                </div>
+
+                <!-- Tip 2 -->
+                <div class="tip-card">
+                    <h4>02. Add Lighting</h4>
+                    <p>Always describe the lighting. "Golden hour backlighting with lens flare" creates more impactful
+                        results than no lighting info.</p>
+                </div>
+
+                <!-- Tip 3 -->
+                <div class="tip-card">
+                    <h4>03. Describe the Camera</h4>
+                    <p>Include camera details like "85mm portrait lens, shallow depth of field, f/1.4 bokeh" for
+                        photorealistic results.</p>
+                </div>
+
+                <!-- Tip 4 -->
+                <div class="tip-card">
+                    <h4>04. Set the Mood</h4>
+                    <p>Use emotional descriptors: "melancholic", "energetic", "mysterious". This guides the AI's color
+                        and tone choices.</p>
+                </div>
+
+                <!-- Tip 5 -->
+                <div class="tip-card">
+                    <h4>05. Use Style References</h4>
+                    <p>Reference known styles: "in the style of Blade Runner", "Studio Ghibli aesthetic", "Wes Anderson
+                        color palette".</p>
+                </div>
+
+                <!-- Tip 6 -->
+                <div class="tip-card">
+                    <h4>06. Layer Your Details</h4>
+                    <p>Build your prompt in layers: subject first, then environment, then lighting, then mood. This
+                        creates coherent results.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION: PDF GUIDE -->
+    <div id="section-pdf" class="section-view">
+        <div style="text-align: center; margin-bottom: 80px; padding: 0 6%;">
+            <h1 style="font-size: clamp(40px, 8vw, 70px); line-height: 1;">Claim Your Exclusive PDF</h1>
+            <p
+                style="color: var(--text-muted); margin-top: 20px; font-size: 18px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                Follow our systematic guide below to unlock and receive your premium resources via our automated Discord
+                system.</p>
+
+            <div
+                style="margin-top: 50px; background: rgba(0, 243, 255, 0.05); border: 1px solid var(--primary-glow); padding: 30px; border-radius: 20px; display: inline-block;">
+                <h3 style="margin-bottom: 20px; font-size: 20px;">1st Requirement: JOIN OUR DISCORD</h3>
+                <a href="https://discord.gg/wrRvG7JT7F" target="_blank" class="btn-primary"
+                    style="animation: none; box-shadow: 0 0 20px var(--primary-glow);">
+                    Join Discord Server <i class="ph ph-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <div
+            style="max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 100px; padding: 0 6% 150px;">
+
+            <!-- Step 1 -->
+            <div class="pdf-step-card">
+                <span class="step-tag">STEP 01</span>
+                <h2 class="step-headline">Navigating the Hub: Find the channel <span
+                        class="glow-text-primary">"get-the-pdf"</span></h2>
+                <div class="step-visual" style="max-width: 350px; margin-left: auto; margin-right: auto;">
+                    <img src="asset/step1.png" alt="Step 1">
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="pdf-step-card">
+                <span class="step-tag">STEP 02</span>
+                <h2 class="step-headline">Initiate Request: Click on <span class="glow-text-primary">"Message the
+                        Bot"</span></h2>
+                <div class="step-visual">
+                    <img src="asset/step2.png" alt="Step 2">
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="pdf-step-card">
+                <span class="step-tag">STEP 03</span>
+                <h2 class="step-headline">Acknowledge System Prompt</h2>
+                <div class="step-visual">
+                    <img src="asset/step3.png" alt="Step 3">
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="pdf-step-card">
+                <span class="step-tag">STEP 04</span>
+                <h2 class="step-headline">Direct Message: Select <span class="glow-text-primary">"Continue"</span></h2>
+                <div class="step-visual">
+                    <img src="asset/step4.png" alt="Step 4">
+                </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="pdf-step-card">
+                <span class="step-tag">STEP 05</span>
+                <h2 class="step-headline">Verify System Status</h2>
+                <div class="step-visual">
+                    <img src="asset/step5.png" alt="Step 5">
+                </div>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="pdf-step-card">
+                <span class="step-tag">STEP 06</span>
+                <h2 class="step-headline">Provide Link: Submit the <span class="glow-text-primary">URL</span></h2>
+                <div class="step-visual">
+                    <img src="asset/step6.png" alt="Step 6">
+                </div>
+            </div>
+
+            <!-- Step 7 -->
+            <div class="pdf-step-card">
+                <span class="step-tag">STEP 07</span>
+                <h2 class="step-headline">Final Proof: Supply <span class="glow-text-primary">Two Proof
+                        Screenshots</span></h2>
+                <div class="step-visual">
+                    <img src="asset/step7.png" alt="Step 7">
+                </div>
+            </div>
+
+            <!-- Conclusion -->
+            <div
+                style="text-align: center; padding: 60px; background: rgba(0, 243, 255, 0.02); border: 1px dashed var(--glass-border); border-radius: 30px;">
+                <i class="ph ph-check-circle" style="font-size: 50px; color: var(--primary); margin-bottom: 20px;"></i>
+                <h2 style="font-size: 32px; margin-bottom: 15px;">Success!</h2>
+                <p style="color: var(--text-muted);">Once the steps above are carefully completed, zero limit ai bot
+                    will automatically deliver your requested PDF in your DMs.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION: COMMUNITY -->
+    <div id="section-community" class="section-view">
+        <div style="text-align: center; margin-bottom: 80px; padding: 0 6%;">
+            <h1 style="font-size: clamp(40px, 8vw, 70px); line-height: 1;">Connect with the<br>Global Community</h1>
+            <p style="color: var(--text-muted); margin-top: 20px; font-size: 18px;">Stay updated, share your creations,
+                and grow with us across social platforms.</p>
+        </div>
+
+        <div class="community-grid">
+            <!-- Discord Card -->
+            <div class="community-card card-dc">
+                <img src="asset/discord.png" alt="Discord" class="comm-img">
+                <h2 style="margin-bottom: 10px;">Discord</h2>
+                <p style="margin-bottom: 20px;">Share your AI-generated art and get direct support from our active
+                    community.</p>
+                <div style="color: #5865F2; font-family: monospace; margin-bottom: 15px;">Join our community here:</div>
+                <a href="https://discord.gg/wrRvG7JT7F" target="_blank" class="join-btn"
+                    style="border-color: #5865F2; color: #5865F2;">Open Discord</a>
+            </div>
+
+            <!-- Youtube Card -->
+            <div class="community-card card-yt">
+                <img src="asset/yt.png" alt="YouTube" class="comm-img">
+                <h2 style="margin-bottom: 10px;">YouTube</h2>
+                <p style="margin-bottom: 20px;">Watch detailed tutorials and see latest videos on AI tools
+                    action.</p>
+                <div style="color: #ff0000; font-family: monospace; margin-bottom: 15px;">Visit our channel here:</div>
+                <a href="https://www.youtube.com/@ZeroLimit_Ai" target="_blank" class="join-btn"
+                    style="border-color: #ff0000; color: #ff0000;">Visit YouTube</a>
+            </div>
+        </div>
+
+        <!-- Extra Community Vibes -->
+        <div
+            style="text-align: center; margin-top: 100px; padding: 80px 6%; background: rgba(255,255,255,0.02); border-top: 1px solid var(--glass-border);">
+            <i class="ph ph-users-three" style="font-size: 50px; color: var(--primary); margin-bottom: 20px;"></i>
+            <h2 style="font-size: 32px; margin-bottom: 15px;">Collaborate & Innovate</h2>
+            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">We believe in the power of shared
+                intelligence. Whether you're a pro or just starting, there's a place for you in the ZLM-AI ecosystem.
+            </p>
+        </div>
+    </div>
+
+    <!-- PRICING OVERLAY (MODAL) -->
+    <div id="pricing-overlay">
+        <div class="pricing-card">
+            <button class="close-pricing" onclick="closePricing()"><i class="ph ph-x"></i></button>
+
+            <div class="free-badge">0$</div>
+            <div class="enjoy-text">/ MONTH</div>
+
+            <ul class="pricing-features">
+                <li class="pricing-feature"><i class="ph ph-seal-check"></i> AI TOOL ACESS</li>
+                <li class="pricing-feature"><i class="ph ph-seal-check"></i> AI IMAGE GENERATION</li>
+                <li class="pricing-feature"><i class="ph ph-seal-check"></i> VIDEO GENERATIONS</li>
+                <li class="pricing-feature"><i class="ph ph-seal-check"></i> PRO PROMPTS</li>
+                <li class="pricing-feature"><i class="ph ph-seal-check"></i> TIPS AND TRICKS TO AI</li>
+            </ul>
+
+            <div class="first-come">FREE ACCESS FOR EARLY ADOPTERS</div>
+        </div>
+    </div>
+
+    <!-- AUTH MODAL (Login/Signup Required) -->
+    <div id="auth-modal-overlay">
+        <div class="auth-modal">
+            <button class="close-modal" onclick="closeAuthModal()"><i class="ph ph-x"></i></button>
+            <div style="margin-bottom: 30px;">
+                <i class="ph ph-lock-key" style="font-size: 50px; color: var(--primary); margin-bottom: 15px;"></i>
+                <h2>Unlock AI Studio</h2>
+                <p>Please login or sign up with your Google account to access our high-end AI generations.</p>
+            </div>
+
+            <button onclick="handleGoogleLogin()" class="auth-btn-google"
+                style="border:none; cursor:pointer; font-family: 'Outfit';">
+                <i class="ph ph-google-logo" style="font-size: 22px;"></i> Join with Google
+            </button>
+
+            <div class="terms-consent">
+                By signing up, you agree to our <br>
+                <a href="javascript:void(0)" onclick="openTerms()">Terms of Service</a> & <a href="javascript:void(0)"
+                    onclick="openPrivacy()">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-logo">
+            <div class="logo-container" style="justify-content: center; margin-bottom: 20px;">
+                <img src="img.jpg" alt="ZLM-AI" class="logo-img">
+                <span class="logo-text">ZLM-AI</span>
+            </div>
+            <p style="color: var(--text-muted); max-width: 400px;">The ultimate platform for high-end AI generation.
+                Powered by ZLM-Large models.</p>
+        </div>
+
+        <div style="display: flex; gap: 30px; margin: 30px 0; justify-content: center;">
+            <a href="javascript:void(0)" onclick="openTerms()" class="legal-link">Terms of Service</a>
+            <a href="javascript:void(0)" onclick="openPrivacy()" class="legal-link">Privacy Policy</a>
+        </div>
+
+        <div class="socials">
+            <a href="https://www.youtube.com/@ZeroLimit_Ai" target="_blank"><i class="ph ph-youtube-logo"></i></a>
+            <a href="https://www.instagram.com/zerolimitai/" target="_blank"><i class="ph ph-instagram-logo"></i></a>
+            <a href="https://discord.gg/wrRvG7JT7F" target="_blank"><i class="ph ph-discord-logo"></i></a>
+        </div>
+        <div style="margin-top: 20px; font-size: 14px; color: var(--text-muted);">
+            <i class="ph ph-envelope-simple"
+                style="vertical-align: middle; margin-right: 5px; color: var(--primary);"></i>
+            Contact: <a href="mailto:zerolimitai@gmail.com"
+                style="color: white; text-decoration: none; transition: var(--transition-smooth);">zerolimitai@gmail.com</a>
+        </div>
+        <div class="copyright" style="margin-top: 30px;">
+            &copy; 2024 ZLM-AI. ALL RIGHTS RESERVED.
+        </div>
+    </footer>
+
+    <!-- TERMS OF SERVICE OVERLAY -->
+    <div id="terms-overlay">
+        <div class="legal-modal">
+            <button class="close-legal" onclick="closeTerms()"><i class="ph ph-x"></i></button>
+            <h1>Terms of Service</h1>
+            <p>Last updated: March 28, 2026</p>
+
+            <section>
+                <h2>1. Acceptance of Terms</h2>
+                <p>By accessing or using ZLM-AI, you agree to be bound by these Terms of Service. If you do not agree,
+                    you must not use our services.</p>
+            </section>
+
+            <section>
+                <h2>2. User Content & Usage Rights</h2>
+                <div class="legal-highlight">
+                    IMPORTANT: By using ZLM-AI, you acknowledge and agree that we reserve the right to use, store, and
+                    analyze any prompts you enter and any images/videos generated by the platform for our own internal
+                    purposes, including but not limited to platform improvement, marketing, and research.
+                </div>
+                <p>You retain ownership of the original text prompts you create, but you grant ZLM-AI a worldwide,
+                    non-exclusive, royalty-free license to use your content as described above.</p>
+            </section>
+
+            <section>
+                <h2>3. Account Responsibility</h2>
+                <p>You are responsible for maintaining the security of your Google-linked account. Any generations
+                    performed on your account are your responsibility.</p>
+            </section>
+
+            <section>
+                <h2>4. Usage Limits</h2>
+                <p>ZLM-AI reserves the right to modify or remove usage limits at any time. Abuse of the system (spamming
+                    requests) may lead to permanent account suspension.</p>
+            </section>
+
+            <section>
+                <h2>5. Limitation of Liability</h2>
+                <p>ZLM-AI provides AI generation "as is". We are not responsible for any legal implications arising from
+                    the content generated by users.</p>
+            </section>
+        </div>
+    </div>
+
+    <!-- PRIVACY POLICY OVERLAY -->
+    <div id="privacy-overlay">
+        <div class="legal-modal">
+            <button class="close-legal" onclick="closePrivacy()"><i class="ph ph-x"></i></button>
+            <h1>Privacy Policy</h1>
+            <p>Last updated: March 28, 2026</p>
+
+            <section>
+                <h2>1. Information We Collect</h2>
+                <p>We collect your Google account information (Email, Name, Avatar) to provide access to our AI tools
+                    and maintain your generation history.</p>
+            </section>
+
+            <section>
+                <h2>2. Data Usage</h2>
+                <p>Your generation history (prompts and results) is stored securely on our servers and Cloudinary. As
+                    stated in our Terms, we may use this data for platform improvements.</p>
+            </section>
+
+            <section>
+                <h2>3. Third-Party Services</h2>
+                <p>We use Pollinations.ai for generation, Cloudinary for storage, and Google for authentication. Each
+                    service has its own privacy policies.</p>
+            </section>
+
+            <section>
+                <h2>4. Security</h2>
+                <p>We implement professional security measures to protect your data, including rate limiting and secure
+                    database indexing.</p>
+            </section>
+        </div>
+    </div>
+
+    <script src="3.js"></script>
+
+    <!-- Firebase Google Login Brain -->
+
+    <!-- Firebase Google Login & Database Brain -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+
+        // NEW: We are importing the Firestore Database!
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyArouNuEu2aftE8iWCtMn2xeJAKa_DCAII",
+            authDomain: "zlm-ai.firebaseapp.com",
+            projectId: "zlm-ai",
+            storageBucket: "zlm-ai.firebasestorage.app",
+            messagingSenderId: "882471861043",
+            appId: "1:882471861043:web:3afcde8dfdb4f8e4391c46"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const provider = new GoogleAuthProvider();
+
+        // Make Database and User available to our whole website
+        window.db = getFirestore(app);
+        window.currentUser = null;
+
+        window.handleGoogleLogin = async (e) => {
+            if (e) e.preventDefault();
+            try {
+                provider.setCustomParameters({ prompt: 'select_account' });
+                const result = await signInWithPopup(auth, provider);
+                showToast("Welcome, " + result.user.displayName + "! ✨", "success");
+
+                const modal = document.getElementById('auth-modal-overlay');
+                if (modal) modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            } catch (error) {
+                showToast("Login failed: " + error.message, "error");
+            }
+        };
+
+        window.handleLogout = async () => {
+            try {
+                await signOut(auth);
+                showToast("Logged out successfully", "success");
+            } catch (error) {
+                console.error("Logout failed:", error);
+            }
+        };
+
+        onAuthStateChanged(auth, (user) => {
+            const navAuth = document.getElementById('navAuth');
+            if (user) {
+                window.currentUser = user; // Save user data globally
+
+                navAuth.innerHTML = `
+            <div class="user-profile" onclick="handleLogout()" title="Click to logout">
+                <img src="${user.photoURL}" class="user-avatar" alt="Profile">
+                <span style="font-size: 14px; font-weight: 600; color: white;">${user.displayName.split(' ')[0]}</span>
+            </div>
+          `;
+
+                // Whenever they log in, pull their saved images from the database!
+                if (window.loadUserHistory) window.loadUserHistory();
+
+            } else {
+                window.currentUser = null; // Nobody is logged in
+                document.querySelector('.history-list').innerHTML = ''; // Clear sidebar
+
+                navAuth.innerHTML = `
+            <button onclick="handleGoogleLogin()" class="btn-primary" style="padding: 10px 25px; font-size: 14px; animation: none; border:none; cursor:pointer; font-family: 'Outfit';">
+                Login with Google <i class="ph ph-google-logo"></i>
+            </button>
+          `;
+            }
+        });
+    </script>
+
+    <!-- AI Helper Bot -->
+    <div class="bot-container">
+        <div class="bot-chat-embed" id="botChatEmbed">
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <div style="position: relative;">
+                        <img src="avatar.png"
+                            style="width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--primary); object-fit: cover;">
+                        <div class="chat-status" style="position: absolute; bottom: 0; right: 0;"></div>
+                    </div>
+                    <div>
+                        <h3 style="margin: 0; font-family: 'Outfit';">ZLM</h3>
+                        <p
+                            style="font-size: 10px; color: #00ff88; margin: 0; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
+                            Hey There</p>
+                    </div>
+                </div>
+                <button class="close-chat" onclick="toggleBotChat()">
+                    <i class="ph ph-x-circle"></i>
+                </button>
+            </div>
+            <div class="chat-body" id="chatBody">
+                <div class="chat-message bot">
+                    Hello! I am ZLM, your AI companion. How can I help you today?
+                </div>
+            </div>
+            <div class="chat-footer">
+                <input type="text" class="chat-input" placeholder="Type here..." id="chatInput"
+                    onkeypress="handleChatEnter(event)">
+                <button class="send-btn" onclick="sendMessage()">
+                    <i class="ph ph-paper-plane-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="bot-avatar-wrapper" onclick="toggleBotChat()">
+            <div class="bot-badge" id="botBadge">Need help?</div>
+            <img src="avatar.png" alt="Helper Bot" class="bot-avatar" id="botAvatar">
+        </div>
+    </div>
+
+</body>
+
+
+</html>
