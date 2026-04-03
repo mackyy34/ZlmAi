@@ -1243,7 +1243,6 @@
             try {
                 provider.setCustomParameters({ prompt: 'select_account' });
                 const result = await signInWithPopup(auth, provider);
-                showToast("Welcome, " + result.user.displayName + "! ✨", "success");
 
                 const modal = document.getElementById('auth-modal-overlay');
                 if (modal) modal.style.display = 'none';
@@ -1253,12 +1252,40 @@
             }
         };
 
-        window.handleLogout = async () => {
+        window.handleLogout = async (e) => {
+            if (e) e.stopPropagation();
             try {
                 await signOut(auth);
                 showToast("Logged out successfully", "success");
             } catch (error) {
                 console.error("Logout failed:", error);
+            }
+        };
+
+        window.toggleDropdown = (e) => {
+            if(e) e.stopPropagation();
+            const dropdown = document.getElementById('userDropdown');
+            if(dropdown) {
+                dropdown.style.display = dropdown.style.display === 'none' ? 'flex' : 'none';
+            }
+        };
+
+        window.addEventListener('click', (e) => {
+            const dropdown = document.getElementById('userDropdown');
+            const profile = document.querySelector('.user-profile');
+            if (dropdown && profile && !profile.contains(e.target)) {
+                dropdown.style.display = 'none';
+            }
+        });
+
+        window.handleSwitchAccount = async (e) => {
+            if(e) e.stopPropagation();
+            try {
+                await signOut(auth);
+                // Call login again to open the popup for a new account
+                window.handleGoogleLogin();
+            } catch (error) {
+                console.error("Switch failed:", error);
             }
         };
 
@@ -1268,9 +1295,17 @@
                 window.currentUser = user; // Save user data globally
 
                 navAuth.innerHTML = `
-            <div class="user-profile" onclick="handleLogout()" title="Click to logout">
+            <style>
+                .dropdown-menu button:hover { background: rgba(0, 212, 255, 0.1) !important; color: var(--primary) !important; }
+            </style>
+            <div class="user-profile" onclick="toggleDropdown(event)" style="position: relative; cursor: pointer;">
                 <img src="${user.photoURL}" class="user-avatar" alt="Profile">
                 <span style="font-size: 14px; font-weight: 600; color: white;">${user.displayName.split(' ')[0]}</span>
+                
+                <div id="userDropdown" class="dropdown-menu" style="display: none; position: absolute; top: 120%; right: 0; background: rgba(20, 20, 20, 0.95); border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 12px; padding: 10px; min-width: 140px; z-index: 1000; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5); backdrop-filter: blur(10px); flex-direction: column; gap: 5px;">
+                    <button onclick="handleLogout(event)" style="width: 100%; text-align: left; padding: 10px 15px; background: none; border: none; color: white; cursor: pointer; border-radius: 8px; transition: all 0.3s ease; font-family: 'Outfit'; font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 8px;"><i class="ph ph-sign-out" style="font-size: 18px;"></i> Log Out</button>
+                    <button onclick="handleSwitchAccount(event)" style="width: 100%; text-align: left; padding: 10px 15px; background: none; border: none; color: white; cursor: pointer; border-radius: 8px; transition: all 0.3s ease; font-family: 'Outfit'; font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 8px;"><i class="ph ph-arrows-left-right" style="font-size: 18px;"></i> Switch</button>
+                </div>
             </div>
           `;
 
