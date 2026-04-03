@@ -1281,8 +1281,12 @@
         window.handleSwitchAccount = async (e) => {
             if(e) e.stopPropagation();
             try {
-                await signOut(auth);
-                // Call login again to open the popup for a new account
+                // Hide dropdown first
+                const dropdown = document.getElementById('userDropdown');
+                if(dropdown) dropdown.style.display = 'none';
+                
+                // Call login directly to open the popup for a new account without signing out.
+                // This ensures if they cancel the popup, they remain logged into their previous account.
                 window.handleGoogleLogin();
             } catch (error) {
                 console.error("Switch failed:", error);
