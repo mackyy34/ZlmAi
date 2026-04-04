@@ -1,4 +1,28 @@
+// --- CONFIGURATION ---
+const API_BASE = "https://zlm-back-production.up.railway.app";
+
 // --- Navigation Logic ---
+function toggleMobileMenu() {
+    const drawer = document.getElementById('mobileNavDrawer');
+    const overlay = document.getElementById('mobileNavOverlay');
+    const btn = document.getElementById('hamburgerBtn');
+    const isOpen = drawer.classList.contains('open');
+    drawer.classList.toggle('open', !isOpen);
+    overlay.classList.toggle('open', !isOpen);
+    btn.classList.toggle('active', !isOpen);
+    document.body.style.overflow = isOpen ? 'auto' : 'hidden';
+}
+
+function closeMobileMenu() {
+    const drawer = document.getElementById('mobileNavDrawer');
+    const overlay = document.getElementById('mobileNavOverlay');
+    const btn = document.getElementById('hamburgerBtn');
+    drawer.classList.remove('open');
+    overlay.classList.remove('open');
+    btn.classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
 function showToast(message, type = 'success') {
     const container = document.getElementById('toast-container');
     const toast = document.createElement('div');
@@ -90,6 +114,12 @@ async function generateNow() {
     const prompt = promptInput.value.trim();
 
     if (!prompt) { showToast("Please enter a prompt!", "error"); return; }
+    
+    if (!window.currentUser) {
+        showToast("Please Login with Google first to generate!", "error");
+        openAuthModal();
+        return;
+    }
 
     genBtn.disabled = true;
     genBtn.innerHTML = 'Generating... <i class="ph ph-sparkle animate-pulse"></i>';
@@ -99,35 +129,43 @@ async function generateNow() {
         const isVideo = currentGenMode.includes('v');
         const type = isVideo ? 'video' : 'image';
 
-        // Connects directly to YOUR secure Python backend!
-        const resp = await fetch('https://mackyyyy.pythonanywhere.com/api/generate', {
+        const resp = await fetch(`${API_BASE}/api/generate`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                prompt: prompt,
-                aspectRatio: currentRatio,
-                type: type
+            body: JSON.stringify({ 
+                prompt: prompt, 
+                aspectRatio: currentRatio, 
+                type: type,
+                userId: window.currentUser.uid
             })
         });
 
         const data = await resp.json();
 
         if (data.success) {
-            const fullUrl = data.url; // WE JUST USE THE CLOUD URL DIRECTLY NOW!
+            const fullUrl = data.url;
             showToast("Generation Complete! ✨");
             updateStatus('ph-check-circle', 'Success!');
             showPreview(fullUrl, type, prompt);
             addToHistory(fullUrl, type, prompt);
-        }
-
-        else {
+            
+            // Save to DB
+            const { collection, addDoc } = await import("https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js");
+            await addDoc(collection(window.db, "generations"), {
+                userId: window.currentUser.uid,
+                prompt: prompt,
+                url: fullUrl,
+                type: type,
+                timestamp: Date.now()
+            });
+        } else {
             showToast("AI Error: " + data.error, "error");
             updateStatus('ph-warning-circle', "API Error", true);
         }
     } catch (err) {
         console.error(err);
         showToast("Connection Error", "error");
-        updateStatus('ph-warning-circle', "Make sure app.py is running!", true);
+        updateStatus('ph-warning-circle', "Make sure backend is running!", true);
     } finally {
         genBtn.disabled = false;
         genBtn.innerHTML = 'Generate Now <i class="ph ph-sparkle"></i>';
@@ -146,7 +184,7 @@ function switchGenMode(mode) {
         genContainer.style.display = 'none';
         comingSoon.style.display = 'flex';
     } else {
-        genContainer.style.display = 'grid';
+        genContainer.style.display = 'grid'; 
         comingSoon.style.display = 'none';
 
         document.querySelectorAll('.gen-mode-inputs').forEach(inputs => inputs.style.display = 'none');
@@ -179,8 +217,7 @@ function showPreview(url, type, prompt) {
     const previewBox = document.getElementById('preview-display-box');
     previewBox.style.display = 'block';
     const mediaContent = type === 'image' ? `<img src="${url}">` : `<video src="${url}" controls autoplay loop></video>`;
-
-    // Nice proper filename for downloads
+    
     const fileName = type === 'image' ? `ZLM-AI-${Date.now()}.jpg` : `ZLM-AI-${Date.now()}.mp4`;
 
     previewBox.innerHTML = `
@@ -205,7 +242,6 @@ function addToHistory(url, type, prompt) {
     list.prepend(item);
 }
 
-// --- Tools Filter Logic ---
 function filterTools(category, btn) {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
@@ -241,7 +277,6 @@ function copyPrompt(btn) {
     });
 }
 
-// --- AI Bot Logic ---
 let chatHistory = [
     { role: "assistant", content: "Hello! I am ZLM, your AI companion. How can I help you today?" }
 ];
@@ -265,11 +300,7 @@ function toggleBotChat() {
     }
 }
 
-function handleChatEnter(e) {
-    if (e.key === 'Enter') {
-        sendMessage();
-    }
-}
+function handleChatEnter(e) { if (e.key === 'Enter') sendMessage(); }
 
 async function sendMessage() {
     const input = document.getElementById('chatInput');
@@ -277,14 +308,11 @@ async function sendMessage() {
     if (!text) return;
 
     const chatBody = document.getElementById('chatBody');
-
     const userMsg = document.createElement('div');
     userMsg.className = 'chat-message user';
     userMsg.textContent = text;
     chatBody.appendChild(userMsg);
-
     chatHistory.push({ role: "user", content: text });
-
     input.value = '';
     chatBody.scrollTop = chatBody.scrollHeight;
 
@@ -292,15 +320,10 @@ async function sendMessage() {
     loadingMsg.className = 'chat-message bot';
     loadingMsg.innerHTML = '<i class="ph ph-circle-notch animate-spin"></i> Analyzing...';
     chatBody.appendChild(loadingMsg);
-    chatBody.scrollTop = chatBody.scrollHeight;
 
     try {
-        const apiHistory = chatHistory.filter(msg =>
-            msg.content !== "Hello! I am ZLM, your AI companion. How can I help you today?"
-        );
-
-        // Connects to YOUR secure backend chat
-        const response = await fetch('https://mackyyyy.pythonanywhere.com/api/chat', {
+        const apiHistory = chatHistory.filter(msg => msg.content !== "Hello! I am ZLM, your AI companion. How can I help you today?");
+        const response = await fetch(`${API_BASE}/api/chat`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ messages: apiHistory })
@@ -311,119 +334,53 @@ async function sendMessage() {
 
         if (response.ok && data.choices && data.choices[0]) {
             let botReply = data.choices[0].message.content;
-
             const redirectMatch = botReply.match(/\[REDIRECT:(\w+)\]/);
             if (redirectMatch) {
                 const sectionId = redirectMatch[1];
                 botReply = botReply.replace(/\[REDIRECT:\w+\]/g, '').trim();
                 if (!botReply) botReply = `Navigating to ${sectionId.toUpperCase()}... 🚀`;
-
-                setTimeout(() => {
-                    if (sectionId === 'pricing') openPricing();
-                    else if (typeof showSection === 'function') showSection(sectionId);
-                }, 500);
+                setTimeout(() => { if (sectionId === 'pricing') openPricing(); else if (typeof showSection === 'function') showSection(sectionId); }, 500);
             }
-
             const botMsg = document.createElement('div');
             botMsg.className = 'chat-message bot';
             botMsg.textContent = botReply;
             chatBody.appendChild(botMsg);
             chatHistory.push({ role: "assistant", content: botReply });
         } else {
-            throw new Error("Invalid response from AI");
+            throw new Error("Invalid response");
         }
     } catch (err) {
-        console.error("Chat Error:", err);
         if (chatBody.contains(loadingMsg)) chatBody.removeChild(loadingMsg);
         const errorMsg = document.createElement('div');
         errorMsg.className = 'chat-message bot';
         errorMsg.innerHTML = `<i class="ph ph-warning-circle"></i> Connection failed.`;
         chatBody.appendChild(errorMsg);
     }
-
     chatBody.scrollTop = chatBody.scrollHeight;
 }
-// ==========================================
-// --- DATABASE LOGIC (SAVE & LOAD HISTORY) ---
-// ==========================================
 
-// 1. Override the generateNow function to save to Database AFTER generating
-const originalGenerateNow = generateNow;
-generateNow = async function () {
-    // If they aren't logged in, stop them from generating!
-    if (!window.currentUser) {
-        showToast("Please Login with Google first to generate!", "error");
-        openAuthModal();
-        return;
-    }
-
-    // Run the normal generation we already built
-    await originalGenerateNow();
-
-    // After it succeeds, save it to the Database!
-    const latestItem = document.querySelector('.history-item');
-    if (latestItem && window.currentUser && window.db) {
-        const imgElement = latestItem.querySelector('.history-item-media');
-        const imgUrl = imgElement.src;
-        const prompt = latestItem.title;
-        const type = imgElement.tagName.toLowerCase() === 'video' ? 'video' : 'image';
-
-        try {
-            const { collection, addDoc } = await import("https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js");
-            await addDoc(collection(window.db, "generations"), {
-                userId: window.currentUser.uid, // The user's Google ID
-                prompt: prompt,
-                url: imgUrl,
-                type: type,
-                timestamp: Date.now()
-            });
-            console.log("✅ Saved to Database!");
-        } catch (e) {
-            console.error("Database Save Error:", e);
-        }
-    }
-};
-
-// 2. Function to load history when they log in
 window.loadUserHistory = async () => {
     if (!window.currentUser || !window.db) return;
-
     const list = document.querySelector('.history-list');
-    list.innerHTML = '<p style="color:var(--text-muted); text-align:center; font-size:12px; padding: 20px;">Loading your gallery...</p>';
-
+    list.innerHTML = '<p style="color:var(--text-muted); text-align:center; font-size:12px; padding: 20px;">Loading...</p>';
     try {
         const { collection, query, where, getDocs } = await import("https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js");
-
-        // Ask the database for ONLY this user's images
         const q = query(collection(window.db, "generations"), where("userId", "==", window.currentUser.uid));
         const querySnapshot = await getDocs(q);
-
         let myHistory = [];
         querySnapshot.forEach((doc) => myHistory.push(doc.data()));
-
-        // Sort them so the newest is at the top
         myHistory.sort((a, b) => b.timestamp - a.timestamp);
-
-        list.innerHTML = ''; // Clear "loading" text
-
-        if (myHistory.length === 0) {
-            list.innerHTML = '<p style="color:var(--text-muted); text-align:center; font-size:12px; padding: 20px;">No generations yet. Start creating!</p>';
-        }
-
-        // Put them on the screen
+        list.innerHTML = '';
+        if(myHistory.length === 0) list.innerHTML = '<p style="color:var(--text-muted); text-align:center; font-size:12px; padding: 20px;">No generations yet.</p>';
         myHistory.forEach(data => {
             const item = document.createElement('div');
             item.className = 'history-item';
             item.title = data.prompt;
             item.onclick = () => showPreview(data.url, data.type, data.prompt);
-            item.innerHTML = data.type === 'image'
-                ? `<img src="${data.url}" class="history-item-media" style="object-fit: cover;">`
-                : `<video src="${data.url}" class="history-item-media" style="object-fit: cover;"></video>`;
+            item.innerHTML = data.type === 'image' ? `<img src="${data.url}" class="history-item-media" style="object-fit: cover;">` : `<video src="${data.url}" class="history-item-media" style="object-fit: cover;"></video>`;
             list.appendChild(item);
         });
-
     } catch (e) {
         console.error("Failed to load history", e);
-        list.innerHTML = '<p style="color:red; text-align:center; font-size:12px;">Failed to load history.</p>';
     }
 };
